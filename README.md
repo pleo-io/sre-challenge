@@ -48,7 +48,28 @@ payment-provider-abcdef1234-1ab25   1/1     Ready                        0      
 
 #### Requirements
 
-Write here about the :bug:, the fix, how you found it, and anything else you want to share.
+After building images and applying _deployment.yaml_ files pods were not starting giving errors (`kubectl describe pod name`): _"Error: container has runAsNonRoot and image will run as root kubernetes"_
+
+```
+NAME                           READY   STATUS                       RESTARTS   AGE
+invoice-app-5c59847c9d-2q7hj   0/1     CreateContainerConfigError   0          3m49s
+invoice-app-85bf5d4fbf-7c22t   0/1     CreateContainerConfigError   0          6m33s
+invoice-app-85bf5d4fbf-df8gr   0/1     CreateContainerConfigError   0          6m33s
+invoice-app-85bf5d4fbf-mxhvq   0/1     CreateContainerConfigError   0          6m33s
+```
+
+I have added line to Dockerfiles to let them run as non-root user and rebuild docker images.
+
+```
+$ k get pods
+NAME                               READY   STATUS    RESTARTS   AGE
+invoice-app-85bf5d4fbf-2r4tp       1/1     Running   0          22m
+invoice-app-85bf5d4fbf-df8gr       1/1     Running   0          30m
+invoice-app-85bf5d4fbf-h2bvj       1/1     Running   0          23m
+payment-provider-fd68f8c7c-24zw7   1/1     Running   0          17m
+payment-provider-fd68f8c7c-4hghs   1/1     Running   0          14m
+payment-provider-fd68f8c7c-69wvw   1/1     Running   0          14m
+```
 
 ### Part 2 - Setup the apps
 
