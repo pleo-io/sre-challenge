@@ -1,0 +1,6 @@
+apiVersion: v2
+name: payment-provider
+description: A Helm chart for payment-provider microservice deployment
+type: application
+version: 0.1.0
+appVersion: "1.0.0"

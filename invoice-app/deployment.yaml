@@ -3,7 +3,7 @@ kind: Deployment
 metadata:
   name: invoice-app
 spec:
-  replicas: 3
+  replicas: 1
   selector:
     matchLabels:
       app: invoice-app
@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: main
-        image: invoice-app:latest
+        image: invoice-app:challenge
         imagePullPolicy: IfNotPresent
       securityContext:
         runAsNonRoot: true

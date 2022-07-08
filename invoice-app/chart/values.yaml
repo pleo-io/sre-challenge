@@ -1,0 +1,8 @@
+
+docker:
+  image:
+    name: invoice-app
+deployment:
+  replicas: 3
+  container:
+    port: 8081

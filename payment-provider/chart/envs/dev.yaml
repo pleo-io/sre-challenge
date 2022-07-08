@@ -1,0 +1,4 @@
+namespace: development
+docker:
+  image:
+    version: challenge

@@ -3,7 +3,7 @@ kind: Deployment
 metadata:
   name: payment-provider
 spec:
-  replicas: 3
+  replicas: 1
   selector:
     matchLabels:
       app: payment-provider
@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: main
-        image: payment-provider:latest
+        image: payment-provider:challenge
         imagePullPolicy: IfNotPresent
       securityContext:
         runAsNonRoot: true

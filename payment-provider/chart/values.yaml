@@ -1,0 +1,7 @@
+docker:
+  image:
+    name: payment-provider
+deployment:
+  replicas: 3 
+  container:
+    port: 8081
